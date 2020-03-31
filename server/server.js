@@ -43,7 +43,7 @@ let contenttype = 'text/html';
 
 fs.readFile(filepath,(err,content)=>{   
     if(err){
-        if(err == 'ENDENT'){
+        if(err.code == 'ENOENT'){
             fs.readFile(path.join(__dirname,'../public','error.html'),(err,content)=>{
                 res.writeHead(200,{'Content-Type':contenttype});
                 res.end(content,'utf8');
